@@ -1,7 +1,11 @@
-package com.cartify.ecommerce.category;
+package com.cartify.ecommerce.category.controller;
 
+import com.cartify.ecommerce.category.dto.CategoryDTO;
+import com.cartify.ecommerce.category.response.CategoryResponse;
+import com.cartify.ecommerce.category.service.CategoryService;
 import com.cartify.ecommerce.payload.PageMetaResponse;
 import com.cartify.ecommerce.payload.PageResponse;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,14 +34,18 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CategoryResponse> getCategoryById(@PathVariable Long id) {
+    public ResponseEntity<CategoryResponse> getCategoryById(
+            @PathVariable Long id
+    ) {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(this.service.getCategoryById(id));
     }
 
     @PostMapping
-    public ResponseEntity<CategoryResponse> createCategory(@RequestBody CategoryDTO categoryDTO) {
+    public ResponseEntity<CategoryResponse> createCategory(
+            @Valid @RequestBody CategoryDTO categoryDTO
+    ) {
         CategoryResponse response = this.service.createCategory(categoryDTO);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -45,7 +53,10 @@ public class CategoryController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CategoryResponse> updateCategory(@PathVariable Long id, @RequestBody CategoryDTO categoryDTO) {
+    public ResponseEntity<CategoryResponse> updateCategory(
+            @PathVariable Long id,
+            @Valid @RequestBody CategoryDTO categoryDTO
+    ) {
         CategoryResponse response = this.service.updateCategory(id, categoryDTO);
         return ResponseEntity
                 .status(HttpStatus.OK)
@@ -53,11 +64,13 @@ public class CategoryController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCategory(@PathVariable Long id) {
-        this.service.getCategoryById(id);
+    public ResponseEntity<Void> deleteCategory(
+            @PathVariable Long id
+    ) {
+        this.service.deleteCategory(id);
 
         return ResponseEntity
                 .status(HttpStatus.NO_CONTENT)
-                .body(CategoryConstants.CATEGORY_WAS_DELETED);
+                .<Void>build();
     }
 }

@@ -1,5 +1,8 @@
-package com.cartify.ecommerce.category;
+package com.cartify.ecommerce.category.mapper;
 
+import com.cartify.ecommerce.category.model.Category;
+import com.cartify.ecommerce.category.response.CategoryResponse;
+import com.cartify.ecommerce.category.dto.CategoryDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

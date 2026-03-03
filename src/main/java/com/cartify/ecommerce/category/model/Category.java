@@ -1,5 +1,6 @@
-package com.cartify.ecommerce.category;
+package com.cartify.ecommerce.category.model;
 
+import com.cartify.ecommerce.category.constants.CategoryConstants;
 import jakarta.persistence.*;
 import lombok.*;
 

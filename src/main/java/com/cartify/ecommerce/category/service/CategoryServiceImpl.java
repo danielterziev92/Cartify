@@ -1,5 +1,11 @@
-package com.cartify.ecommerce.category;
+package com.cartify.ecommerce.category.service;
 
+import com.cartify.ecommerce.category.constants.CategoryConstants;
+import com.cartify.ecommerce.category.dto.CategoryDTO;
+import com.cartify.ecommerce.category.mapper.CategoryMapper;
+import com.cartify.ecommerce.category.model.Category;
+import com.cartify.ecommerce.category.repository.CategoryRepository;
+import com.cartify.ecommerce.category.response.CategoryResponse;
 import com.cartify.ecommerce.exception.EntityAlreadyExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;

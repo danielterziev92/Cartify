@@ -1,4 +1,4 @@
-package com.cartify.ecommerce.category;
+package com.cartify.ecommerce.category.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

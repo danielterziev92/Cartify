@@ -1,5 +1,7 @@
-package com.cartify.ecommerce.category;
+package com.cartify.ecommerce.category.service;
 
+import com.cartify.ecommerce.category.dto.CategoryDTO;
+import com.cartify.ecommerce.category.response.CategoryResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

@@ -1,5 +1,6 @@
-package com.cartify.ecommerce.category;
+package com.cartify.ecommerce.category.repository;
 
+import com.cartify.ecommerce.category.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
