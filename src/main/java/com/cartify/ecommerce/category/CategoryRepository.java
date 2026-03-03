@@ -1,6 +1,5 @@
-package com.cartify.ecommerce.repository;
+package com.cartify.ecommerce.category;
 
-import com.cartify.ecommerce.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,6 +8,8 @@ import java.util.Optional;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
+
+    List<Category> findAllByNameContainingIgnoreCase(String name);
 
     List<Category> findAllByParentIsNull();
 
