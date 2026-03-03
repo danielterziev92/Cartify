@@ -1,13 +1,19 @@
-package com.cartify.ecommerce.service;
+package com.cartify.ecommerce.category;
 
-import com.cartify.ecommerce.payload.CategoryDTO;
-import com.cartify.ecommerce.payload.CategoryResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 public interface CategoryService {
 
     Page<CategoryResponse> getAllCategories(Pageable pageable);
+
+    Page<CategoryResponse> getAllCategoriesWithChildren(Pageable pageable);
+
+    List<CategoryResponse> getSubcategories(Long parentId);
+
+    List<CategoryResponse> searchCategories(String name);
 
     CategoryResponse getCategoryById(Long id);
 
@@ -15,5 +21,8 @@ public interface CategoryService {
 
     CategoryResponse updateCategory(Long id, CategoryDTO categoryDTO);
 
-    String deleteCategory(Long id);
+    CategoryResponse moveCategory(Long id, Long newParentId);
+
+    void deleteCategory(Long id);
+
 }
