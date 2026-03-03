@@ -1,14 +1,21 @@
 package com.cartify.ecommerce.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
+@Table(
+        name = "categories",
+        indexes = {
+                @Index(name = "category_name_idx", columnList = "name", unique = true),
+                @Index(name = "category_parent_idx", columnList = "parent_id")
+        }
+)
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,5 +28,14 @@ public class Category {
     private Long id;
 
     @NotBlank
+    @Column(nullable = false)
     private String name;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    private Category parent;
+
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private Set<Category> children = new HashSet<>();
 }
