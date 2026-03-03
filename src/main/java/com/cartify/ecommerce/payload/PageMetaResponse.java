@@ -8,8 +8,6 @@ import org.springframework.data.domain.Page;
 public record PageMetaResponse(
         @JsonProperty("current-page") int currentPage,
         @JsonProperty("per-page") int perPage,
-        int from,
-        int to,
         long total,
         @JsonProperty("last-page") int lastPage
 ) {
@@ -18,8 +16,6 @@ public record PageMetaResponse(
         return new PageMetaResponse(
                 page.getNumber() + 1,
                 page.getSize(),
-                page.getNumber() * page.getSize() + 1,
-                page.getNumber() * page.getSize() + page.getNumberOfElements(),
                 page.getTotalElements(),
                 page.getTotalPages()
         );
