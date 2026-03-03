@@ -1,7 +1,7 @@
 CREATE TABLE categories
 (
     id        BIGINT GENERATED ALWAYS AS IDENTITY NOT NULL,
-    name      VARCHAR(255)                        NOT NULL,
+    name      VARCHAR(100)                        NOT NULL,
     parent_id BIGINT,
     CONSTRAINT pk_categories PRIMARY KEY (id)
 );

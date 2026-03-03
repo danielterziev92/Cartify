@@ -1,7 +1,6 @@
-package com.cartify.ecommerce.model;
+package com.cartify.ecommerce.category;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.HashSet;
@@ -27,8 +26,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Column(nullable = false)
+    @Column(length = CategoryConstants.NAME_MAX_LENGTH, nullable = false)
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
