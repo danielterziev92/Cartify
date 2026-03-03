@@ -9,8 +9,6 @@ public interface CategoryService {
 
     Page<CategoryResponse> getAllCategories(Pageable pageable);
 
-    Page<CategoryResponse> getAllCategoriesWithChildren(Pageable pageable);
-
     List<CategoryResponse> getSubcategories(Long parentId);
 
     List<CategoryResponse> searchCategories(String name);

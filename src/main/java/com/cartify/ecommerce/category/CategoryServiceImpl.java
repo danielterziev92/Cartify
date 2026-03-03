@@ -22,13 +22,8 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional(readOnly = true)
     public Page<CategoryResponse> getAllCategories(Pageable pageable) {
-        return this.repository.findAll(pageable).map(mapper::toResponse);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public Page<CategoryResponse> getAllCategoriesWithChildren(Pageable pageable) {
-        return this.repository.findAllByParentIsNull(pageable)
+        return this.repository
+                .findAll(pageable)
                 .map(this.mapper::toResponse);
     }
 
@@ -55,7 +50,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional(readOnly = true)
     public CategoryResponse getCategoryById(Long id) {
-        return repository.findWithChildrenById(id)
+        return repository.findById(id)
                 .map(mapper::toResponse)
                 .orElseThrow(() -> new EntityNotFoundException(CategoryConstants.CATEGORY_NOT_FOUND));
     }

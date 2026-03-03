@@ -6,7 +6,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface CategoryMapper {
 
-    @Mapping(target = "children", source = "children")
+    @Mapping(target = "parentId", source = "parent.id")
     CategoryResponse toResponse(Category category);
 
     @Mapping(target = "children", ignore = true)

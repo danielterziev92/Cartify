@@ -1,6 +1,10 @@
 package com.cartify.ecommerce.category;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record CategoryResponse(Long id, String name, List<CategoryResponse> children) {
+public record CategoryResponse(
+        Long id,
+        String name,
+        @JsonProperty("parent-id") Long parentId
+) {
 }
