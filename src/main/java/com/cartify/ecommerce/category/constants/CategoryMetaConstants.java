@@ -6,4 +6,7 @@ import lombok.NoArgsConstructor;
 public final class CategoryMetaConstants {
     public static final int SEO_TITLE_MAX_LENGTH = 70;
     public static final int SEO_DESCRIPTION_MAX_LENGTH = 320;
+
+    public static final String SEO_TITLE_MAX_LENGTH_MESSAGE = "SEO title cannot exceed " + SEO_TITLE_MAX_LENGTH + " characters.";
+    public static final String SEO_DESCRIPTION_MAX_LENGTH_MESSAGE = "SEO description cannot exceed " + SEO_DESCRIPTION_MAX_LENGTH + " characters.";
 }

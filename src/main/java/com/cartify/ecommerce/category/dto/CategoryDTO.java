@@ -12,6 +12,18 @@ public record CategoryDTO(
         @Size(max = CategoryConstants.NAME_MAX_LENGTH, message = CategoryConstants.NAME_MAX_LENGTH_MESSAGE)
         String name,
 
+        @NotBlank(message = CategoryConstants.SLUG_NOT_BLANK_MESSAGE)
+        @Size(max = CategoryConstants.SLUG_MAX_LENGTH, message = CategoryConstants.SLUG_MAX_LENGTH_MESSAGE)
+        String slug,
+
+        @JsonProperty("image-url")
+        String imageUrl,
+
+        CategoryConstants status,
+
+        @JsonProperty("display-order")
+        Integer displayOrder,
+
         @JsonProperty("parent-id")
         @Min(value = CategoryConstants.PARENT_ID_MIN_VALUE, message = CategoryConstants.PARENT_ID_POSITIVE_MESSAGE)
         Long parentId
