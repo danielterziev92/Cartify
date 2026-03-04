@@ -13,6 +13,7 @@ public final class CategoryConstants {
 
     public static final String SLUG_NOT_BLANK_MESSAGE = "Slug cannot be blank.";
     public static final String SLUG_MAX_LENGTH_MESSAGE = "Slug cannot exceed " + SLUG_MAX_LENGTH + " characters.";
+    public static final String SLUG_NOT_FOUND = "Category with slug: %s was not found.";
 
     public static final String PARENT_ID_POSITIVE_MESSAGE = "Parent id must be greater then " + PARENT_ID_MIN_VALUE + ".";
 
