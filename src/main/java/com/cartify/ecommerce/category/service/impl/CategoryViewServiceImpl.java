@@ -1,10 +1,11 @@
-package com.cartify.ecommerce.category.service;
+package com.cartify.ecommerce.category.service.impl;
 
 import com.cartify.ecommerce.category.constants.CategoryConstants;
 import com.cartify.ecommerce.category.mapper.CategoryMapper;
 import com.cartify.ecommerce.category.model.CategoryStatus;
 import com.cartify.ecommerce.category.repository.CategoryFullViewRepository;
 import com.cartify.ecommerce.category.response.CategoryFullViewResponse;
+import com.cartify.ecommerce.category.service.CategoryViewService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
