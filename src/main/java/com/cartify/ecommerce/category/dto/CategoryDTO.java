@@ -1,6 +1,7 @@
 package com.cartify.ecommerce.category.dto;
 
 import com.cartify.ecommerce.category.constants.CategoryConstants;
+import com.cartify.ecommerce.category.model.CategoryStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -19,7 +20,7 @@ public record CategoryDTO(
         @JsonProperty("image-url")
         String imageUrl,
 
-        CategoryConstants status,
+        CategoryStatus status,
 
         @JsonProperty("display-order")
         Integer displayOrder,

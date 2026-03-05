@@ -1,4 +1,4 @@
-package com.cartify.ecommerce.exception;
+package com.cartify.ecommerce.utils.exception;
 
 public class EntityAlreadyExistsException extends RuntimeException {
     public EntityAlreadyExistsException(String message) {
