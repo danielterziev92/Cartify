@@ -1,0 +1,21 @@
+### Move Category to new parent
+PATCH http://localhost:8080/api/categories/admin/11/move?newParentId=2
+Accept: application/json
+
+###
+
+### Move Category to root (remove parent)
+PATCH http://localhost:8080/api/categories/admin/11/move
+Accept: application/json
+
+###
+
+### Move Category - self as parent (expects error)
+PATCH http://localhost:8080/api/categories/admin/1/move?newParentId=1
+Accept: application/json
+
+###
+
+### Move Category - Not Found
+PATCH http://localhost:8080/api/categories/admin/9999/move?newParentId=1
+Accept: application/json

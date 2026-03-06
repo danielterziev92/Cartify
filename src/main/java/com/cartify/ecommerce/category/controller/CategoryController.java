@@ -29,23 +29,14 @@ public class CategoryController {
 
     @GetMapping
     public ResponseEntity<PageResponse<CategoryFullViewResponse>> getAllCategories(
-            @PageableDefault(sort = {"display_order", "id"}, direction = Sort.Direction.ASC) Pageable pageable
+            @RequestParam(required = false) Long parentId,
+            @PageableDefault(sort = {"displayOrder", "id"}, direction = Sort.Direction.ASC) Pageable pageable
     ) {
-        Page<CategoryFullViewResponse> page = this.categoryViewService.getAllCategories(pageable);
+        Page<CategoryFullViewResponse> page = this.categoryViewService.getAllCategories(parentId, pageable);
 
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(new PageResponse<>(PageMetaResponse.from(page), page.getContent()));
-    }
-
-    @GetMapping("/{parentId}/subcategories")
-    public ResponseEntity<Page<CategoryFullViewResponse>> getCategoriesByParentId(
-            @PathVariable Long parentId,
-            @PageableDefault(sort = {"display_order", "id"}, direction = Sort.Direction.ASC) Pageable pageable
-    ) {
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(this.categoryViewService.getCategoriesByParentId(parentId, pageable));
     }
 
     @GetMapping("slug/{slug}")

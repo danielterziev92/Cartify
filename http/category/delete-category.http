@@ -1,0 +1,9 @@
+### Delete Category by ID
+DELETE http://localhost:8080/api/categories/admin/99
+Accept: application/json
+
+###
+
+### Delete Category - Not Found (expects 404)
+DELETE http://localhost:8080/api/categories/admin/9999
+Accept: application/json

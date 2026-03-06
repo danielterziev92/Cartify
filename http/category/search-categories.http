@@ -1,0 +1,21 @@
+### Search Categories by Name
+GET http://localhost:8080/api/categories/admin/search?name=electronics
+Accept: application/json
+
+###
+
+### Search Categories - Partial match
+GET http://localhost:8080/api/categories/admin/search?name=sport
+Accept: application/json
+
+###
+
+### Search Categories - Case insensitive
+GET http://localhost:8080/api/categories/admin/search?name=FASHION
+Accept: application/json
+
+###
+
+### Search Categories - No results
+GET http://localhost:8080/api/categories/admin/search?name=zzznomatch
+Accept: application/json

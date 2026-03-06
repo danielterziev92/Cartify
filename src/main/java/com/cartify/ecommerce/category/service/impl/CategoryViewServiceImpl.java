@@ -22,7 +22,12 @@ public class CategoryViewServiceImpl implements CategoryViewService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<CategoryFullViewResponse> getAllCategories(Pageable pageable) {
+    public Page<CategoryFullViewResponse> getAllCategories(Long parentId, Pageable pageable) {
+        if (parentId != null)
+            return this.repository
+                    .findAllByParentIdAndStatus(parentId, CategoryStatus.ACTIVE, pageable)
+                    .map(this.mapper::toFullViewResponse);
+
         return this.repository
                 .findAllByStatus(CategoryStatus.ACTIVE, pageable)
                 .map(this.mapper::toFullViewResponse);

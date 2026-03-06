@@ -1,4 +1,4 @@
-package com.cartify.ecommerce.exception;
+package com.cartify.ecommerce.utils.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.jspecify.annotations.NonNull;

@@ -1,0 +1,9 @@
+### Delete Category Meta
+DELETE http://localhost:8080/api/categories/1/meta
+Accept: application/json
+
+###
+
+### Delete Meta - Category not found (expects 404)
+DELETE http://localhost:8080/api/categories/9999/meta
+Accept: application/json

@@ -72,8 +72,14 @@ public class CategoryServiceImpl implements CategoryService {
         category.setStatus(categoryDTO.status() != null ? categoryDTO.status() : CategoryStatus.DRAFT);
         category.setDisplayOrder(categoryDTO.displayOrder() != null ? categoryDTO.displayOrder() : 0);
 
-        if (categoryDTO.parentId() != null)
-            category.setParent(this.findCategoryById(categoryDTO.parentId()));
+        if (categoryDTO.parentId() != null){
+            if (!this.repository.existsById(categoryDTO.parentId()))
+                throw new EntityNotFoundException(
+                        String.format(CategoryConstants.CATEGORY_NOT_FOUND, categoryDTO.parentId())
+                );
+
+            category.setParent(this.repository.getReferenceById(categoryDTO.parentId()));
+        }
 
         return this.saveAndRefresh(category);
     }

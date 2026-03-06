@@ -1,0 +1,38 @@
+### ============================================================
+### CIRCULAR DEPENDENCY TEST
+###
+### Scenario:
+###   A (id=1) is parent of B (id=11)
+###   A (id=1) is parent of C (id=12)
+###   C (id=12) is parent of D (id=17)
+###
+###   Step 1: Move A (id=1) under B (id=11)
+###           => Creates cycle: B -> A -> B
+###
+###   Step 2: Move A (id=1) under D (id=17)
+###           => Creates deeper cycle: D -> C -> A -> D
+###
+### Expected: Should throw an error (IllegalArgumentException or similar)
+### Current behavior: moveCategory only checks direct self-reference
+###                   (newParentId.equals(id)), so cycles ARE NOT detected!
+### ============================================================
+
+### Step 1 - Direct cycle: make A (Electronics) a child of B (Smartphones)
+### Electronics (1) is currently the parent of Smartphones (11)
+### This creates: Smartphones -> Electronics -> Smartphones
+PATCH http://localhost:8080/api/categories/admin/1/move?newParentId=11
+Accept: application/json
+
+###
+
+### Step 2 - Deeper cycle: make A (Electronics, id=1) a child of D (iPhone Cases, id=17)
+### Chain: iPhone Cases -> Smartphones -> Electronics -> iPhone Cases
+PATCH http://localhost:8080/api/categories/admin/1/move?newParentId=17
+Accept: application/json
+
+###
+
+### Step 3 - Self-reference: move category to itself (this IS caught)
+### Expected: IllegalArgumentException - "Category cannot be its own parent"
+PATCH http://localhost:8080/api/categories/admin/1/move?newParentId=1
+Accept: application/json

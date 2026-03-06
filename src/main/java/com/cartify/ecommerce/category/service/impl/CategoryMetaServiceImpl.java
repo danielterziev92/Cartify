@@ -19,6 +19,8 @@ import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Objects;
+
 @Service
 @AllArgsConstructor
 public class CategoryMetaServiceImpl implements CategoryMetaService {
@@ -69,9 +71,9 @@ public class CategoryMetaServiceImpl implements CategoryMetaService {
                         String.format(CategoryMetaConstants.CATEGORY_META_NOT_FOUND, categoryId)
                 ));
 
-        boolean descriptionChanged = !categoryMeta.getDescription().equals(categoryMetaDTO.description());
-        boolean seoTitleChanged = !categoryMeta.getSeoTitle().equals(categoryMetaDTO.seoTitle());
-        boolean seoDescriptionChanged = !categoryMeta.getSeoDescription().equals(categoryMetaDTO.seoDescription());
+        boolean descriptionChanged = !Objects.equals(categoryMeta.getDescription(), categoryMetaDTO.description());
+        boolean seoTitleChanged = !Objects.equals(categoryMeta.getSeoTitle(), categoryMetaDTO.seoTitle());
+        boolean seoDescriptionChanged = !Objects.equals(categoryMeta.getSeoDescription(), categoryMetaDTO.seoDescription());
 
         if (!descriptionChanged && !seoTitleChanged && !seoDescriptionChanged)
             return this.mapper.toResponse(categoryMeta);

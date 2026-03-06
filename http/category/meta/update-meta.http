@@ -1,0 +1,29 @@
+### Update Category Meta
+PUT http://localhost:8080/api/categories/1/meta
+Content-Type: application/json
+
+{
+  "description": "Updated description for Electronics category.",
+  "seo-title": "Electronics - Updated SEO Title",
+  "seo-description": "Updated SEO description for electronics category page."
+}
+
+###
+
+### Update Meta - Clear SEO fields (set to null)
+PUT http://localhost:8080/api/categories/1/meta
+Content-Type: application/json
+
+{
+  "description": "Only description remains."
+}
+
+###
+
+### Update Meta - Category not found (expects 404)
+PUT http://localhost:8080/api/categories/9999/meta
+Content-Type: application/json
+
+{
+  "description": "This should fail."
+}

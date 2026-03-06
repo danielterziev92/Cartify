@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface CategoryViewService {
 
-    Page<CategoryFullViewResponse> getAllCategories(Pageable pageable);
+    Page<CategoryFullViewResponse> getAllCategories(Long parentId, Pageable pageable);
 
     CategoryFullViewResponse getCategoryBySlug(String slug);
 

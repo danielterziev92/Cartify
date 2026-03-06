@@ -11,7 +11,7 @@ public record CategoryMetaDTO(
         @Size(max = CategoryMetaConstants.SEO_TITLE_MAX_LENGTH, message = CategoryMetaConstants.SEO_TITLE_MAX_LENGTH_MESSAGE)
         String seoTitle,
 
-        @JsonProperty("seo-desctiption")
+        @JsonProperty("seo-description")
         @Size(max = CategoryMetaConstants.SEO_DESCRIPTION_MAX_LENGTH, message = CategoryMetaConstants.SEO_DESCRIPTION_MAX_LENGTH_MESSAGE)
         String seoDescription
 ) {

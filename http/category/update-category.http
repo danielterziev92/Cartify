@@ -1,0 +1,64 @@
+### Update Category (full update)
+PUT http://localhost:8080/api/categories/admin/1
+Content-Type: application/json
+
+{
+  "name": "Electronics Updated",
+  "slug": "electronics",
+  "image-url": "https://example.com/images/electronics.jpg",
+  "status": "ACTIVE",
+  "display-order": 1
+}
+
+###
+
+### Update Category - Change status to INACTIVE
+PUT http://localhost:8080/api/categories/admin/1
+Content-Type: application/json
+
+{
+  "name": "Electronics",
+  "slug": "electronics",
+  "status": "INACTIVE",
+  "display-order": 1
+}
+
+###
+
+### Update Category - Change parent
+PUT http://localhost:8080/api/categories/admin/11
+Content-Type: application/json
+
+{
+  "name": "Smartphones",
+  "slug": "smartphones",
+  "status": "ACTIVE",
+  "display-order": 1,
+  "parent-id": 2
+}
+
+###
+
+### Update Category - Duplicate slug (expects error)
+PUT http://localhost:8080/api/categories/admin/1
+Content-Type: application/json
+
+{
+  "name": "Electronics",
+  "slug": "fashion",
+  "status": "ACTIVE",
+  "display-order": 1
+}
+
+###
+
+### Update Category - Not Found
+PUT http://localhost:8080/api/categories/admin/9999
+Content-Type: application/json
+
+{
+  "name": "Ghost Category",
+  "slug": "ghost-category",
+  "status": "ACTIVE",
+  "display-order": 1
+}
