@@ -7,7 +7,7 @@ spring:
     password: P@ssword1
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -31,6 +31,11 @@ spring:
     locations: classpath:db/migration
     baseline-on-migrate: true
     validate-on-migrate: true
+  modulith:
+    events:
+      jdbc:
+        schema-initialization:
+          enabled: true
 #  graphql:
 #    http:
 #      path: /graphql

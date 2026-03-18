@@ -41,6 +41,9 @@ public class CategoryFullView {
     @Column(name = "seo_description")
     private String seoDescription;
 
+    @Column(name = "parent_id")
+    private Long parentId;
+
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "json")
     private List<CategoryChild> children;
