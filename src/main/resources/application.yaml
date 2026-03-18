@@ -1,17 +1,17 @@
 spring:
   application:
     name: ecommerce
-  database:
+  datasource:
     url: jdbc:postgresql://localhost:5432/database
     username: postgres
     password: P@ssword1
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-      show_sql: true
+    show-sql: true
   data:
     web:
       pageable:
