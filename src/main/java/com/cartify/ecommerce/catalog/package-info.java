@@ -3,5 +3,7 @@
  * This is a Spring Modulith application module; its internal packages are not accessible
  * from outside without going through the module's public API surface.
  */
-@org.springframework.modulith.ApplicationModule(displayName = "Catalog")
+@ApplicationModule(displayName = "Catalog", allowedDependencies = "shared")
 package com.cartify.ecommerce.catalog;
+
+import org.springframework.modulith.ApplicationModule;
