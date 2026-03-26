@@ -15,7 +15,7 @@ ALTER TABLE categories
     ADD CONSTRAINT uq_category_slug UNIQUE (slug);
 
 ALTER TABLE categories
-    ADD CONSTRAINT FK_CATEGORIES_ON_PARENT FOREIGN KEY (parent_id) REFERENCES categories (id);
+    ADD CONSTRAINT FK_CATEGORIES_ON_PARENT FOREIGN KEY (parent_id) REFERENCES categories (id) ON DELETE CASCADE;
 
 CREATE INDEX idx_category_display_order ON categories (display_order);
 

@@ -10,7 +10,7 @@ CREATE TABLE categories_meta
 );
 
 ALTER TABLE categories_meta
-    ADD CONSTRAINT FK_CATEGORIES_META_ON_CATEGORY FOREIGN KEY (category_id) REFERENCES categories (id);
+    ADD CONSTRAINT FK_CATEGORIES_META_ON_CATEGORY FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE;
 
 ALTER TABLE categories_meta
     ADD CONSTRAINT uq_category_meta_category_id UNIQUE (category_id);
