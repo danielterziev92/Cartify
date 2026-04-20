@@ -1,4 +1,4 @@
-package com.cartify.ecommerce.identity.passwordreset;
+package com.cartify.ecommerce.identity.passwordreset.domain;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.cartify.ecommerce.identity.passwordreset;
+package com.cartify.ecommerce.identity.passwordreset.domain;
 
 import com.cartify.ecommerce.shared.domain.exception.BusinessRuleException;
 import com.cartify.ecommerce.shared.domain.vo.UserId;
