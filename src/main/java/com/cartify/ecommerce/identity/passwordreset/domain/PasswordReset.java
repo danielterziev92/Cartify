@@ -29,7 +29,7 @@ import java.util.List;
 public class PasswordReset implements AggregateRoot<PasswordReset, PasswordResetId> {
 
     @Getter(AccessLevel.NONE)
-    private static final SecureRandom SECURE_RANDOM = new SecureRandom();
+    private static final SecureRandom numberGenerator = new SecureRandom();
 
     private final PasswordResetId id;
     private final UserId userId;
@@ -142,7 +142,7 @@ public class PasswordReset implements AggregateRoot<PasswordReset, PasswordReset
      */
     private static @NonNull String generateToken() {
         byte[] bytes = new byte[PasswordResetRule.Token.BYTE_LENGTH];
-        SECURE_RANDOM.nextBytes(bytes);
+        numberGenerator.nextBytes(bytes);
         return Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
     }
 }

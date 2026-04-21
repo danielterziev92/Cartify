@@ -2,6 +2,7 @@ package com.cartify.ecommerce.identity.user.domain;
 
 import com.cartify.ecommerce.shared.domain.vo.Email;
 import com.cartify.ecommerce.shared.domain.vo.UserId;
+import lombok.AccessLevel;
 import lombok.Getter;
 import org.jmolecules.ddd.types.AggregateRoot;
 import org.jspecify.annotations.NonNull;
@@ -27,6 +28,7 @@ public class User implements AggregateRoot<User, UserId> {
     private final Email email;
     private PasswordHash passwordHash;
 
+    @Getter(AccessLevel.NONE)
     private final List<UserEvent> events;
 
     private User(
