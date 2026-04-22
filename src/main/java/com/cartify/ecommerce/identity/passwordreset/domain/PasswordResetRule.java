@@ -3,6 +3,8 @@ package com.cartify.ecommerce.identity.passwordreset.domain;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import java.time.Duration;
+
 /**
  * Namespace for password-reset business rules and i18n message keys.
  *
@@ -21,6 +23,8 @@ public final class PasswordResetRule {
          * Minutes a newly issued token remains valid.
          */
         public static final int MINUTES = 15;
+
+        public static final Duration EXPIRE_AFTER = Duration.ofMinutes(MINUTES);
     }
 
     /**

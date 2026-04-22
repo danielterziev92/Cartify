@@ -8,7 +8,6 @@ import lombok.NonNull;
 import org.jmolecules.ddd.types.AggregateRoot;
 
 import java.security.SecureRandom;
-import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -71,7 +70,7 @@ public class PasswordReset implements AggregateRoot<PasswordReset, PasswordReset
                 PasswordResetId.generate(),
                 userId,
                 generateToken(),
-                Instant.now().plus(Duration.ofMinutes(PasswordResetRule.Expiration.MINUTES)),
+                Instant.now().plus(PasswordResetRule.Expiration.EXPIRE_AFTER),
                 0
         );
         passwordReset.events.add(new PasswordResetEvent.Created(passwordReset.id, passwordReset.userId));

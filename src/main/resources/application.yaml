@@ -2,12 +2,12 @@ spring:
   application:
     name: ecommerce
   datasource:
-    url: jdbc:postgresql://localhost:5432/catalog-db
-    username: postgres
-    password: P@ssword1
+    url: ${DB_URL}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     hikari:
-      maximum-pool-size: 10
-      minimum-idle: 2
+      maximum-pool-size: ${DB_POOL_MAX}
+      minimum-idle: ${DB_POOL_MIN}
   jdbc:
     template:
       query-timeout: 30s
