@@ -29,23 +29,17 @@ public sealed interface VerificationCodeEvent extends DomainEvent permits
      *
      * @param id         identifier of the newly created verification code
      * @param userId     owner of the verification code
-     * @param code       the plaintext code value sent to the user
-     * @param expireAt   point in time after which the code is no longer valid
      * @param occurredAt when the event occurred
      */
     record Created(
             @NonNull VerificationCodeId id,
             @NonNull UserId userId,
-            @NonNull String code,
-            @NonNull Instant expireAt,
             @NonNull Instant occurredAt
     ) implements VerificationCodeEvent {
         public Created(
                 @NonNull VerificationCodeId id,
-                @NonNull UserId userId,
-                @NonNull String code,
-                @NonNull Instant expireAt) {
-            this(id, userId, code, expireAt, Instant.now());
+                @NonNull UserId userId) {
+            this(id, userId, Instant.now());
         }
     }
 

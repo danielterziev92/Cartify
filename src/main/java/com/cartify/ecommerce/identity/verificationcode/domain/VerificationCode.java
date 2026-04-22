@@ -60,12 +60,7 @@ public class VerificationCode implements AggregateRoot<VerificationCode, Verific
                 generateCode(),
                 Instant.now().plus(VerificationCodeRule.Expiry.EXPIRE_AFTER)
         );
-        verificationCode.events.add(new VerificationCodeEvent.Created(
-                verificationCode.id,
-                userId,
-                verificationCode.code,
-                verificationCode.expireAt
-        ));
+        verificationCode.events.add(new VerificationCodeEvent.Created(verificationCode.id, userId));
 
         return verificationCode;
     }
@@ -101,7 +96,7 @@ public class VerificationCode implements AggregateRoot<VerificationCode, Verific
             throw new BusinessRuleException(VerificationCodeRule.Expiry.EXPIRED_MSG);
 
         if (!this.code.equals(code))
-            throw new BusinessRuleException(VerificationCodeRule.Code.INVALID_MSG, this.code, this.userId);
+            throw new BusinessRuleException(VerificationCodeRule.Code.INVALID_MSG);
 
         this.events.add(new VerificationCodeEvent.Verified(this.id, this.userId));
     }

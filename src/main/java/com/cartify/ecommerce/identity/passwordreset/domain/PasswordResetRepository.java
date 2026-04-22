@@ -15,29 +15,42 @@ import java.util.Optional;
 public interface PasswordResetRepository extends Repository<PasswordReset, PasswordResetId> {
 
     /**
-     * Returns the password reset with the given ID if it exists.
+     * Finds a password reset by its unique identity.
+     *
+     * @param id the password reset identity
+     * @return the password reset or empty if not found
      */
     Optional<PasswordReset> findById(@NonNull PasswordResetId id);
 
     /**
-     * Returns the password reset associated with the given token, if it exists.
+     * Finds a password reset by its reset token.
+     *
+     * @param token the reset token value
+     * @return the password reset, or empty if no match is found
      */
     Optional<PasswordReset> findByToken(@NonNull String token);
 
     /**
-     * Returns the active (non-expired, non-used) password reset for the given user if one exists.
+     * Finds the active password reset belonging to the given user.
      *
      * <p>At most one active reset is expected per user at any given time.
+     *
+     * @param userId the ID of the owning user
+     * @return the password reset, or empty if the user has no active reset
      */
-    Optional<PasswordReset> findActiveByUserId(@NonNull UserId userId);
+    Optional<PasswordReset> findByUserId(@NonNull UserId userId);
 
     /**
-     * Persists the given password reset aggregate.
+     * Persists a new or updated password reset aggregate.
+     *
+     * @param passwordReset the aggregate to save
      */
     void save(@NonNull PasswordReset passwordReset);
 
     /**
-     * Removes the password reset with the given ID.
+     * Deletes the password reset with the given identity.
+     *
+     * @param id the identity of the password reset to delete
      */
     void deleteById(@NonNull PasswordResetId id);
 }

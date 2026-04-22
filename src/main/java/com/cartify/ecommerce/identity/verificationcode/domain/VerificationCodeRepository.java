@@ -1,6 +1,8 @@
 package com.cartify.ecommerce.identity.verificationcode.domain;
 
+import com.cartify.ecommerce.shared.domain.vo.UserId;
 import org.jmolecules.ddd.types.Repository;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Optional;
 
@@ -18,7 +20,7 @@ public interface VerificationCodeRepository extends Repository<VerificationCode,
      * @param id the verification code identity
      * @return the verification code, or empty if not found
      */
-    Optional<VerificationCode> findById(VerificationCodeId id);
+    Optional<VerificationCode> findById(@NonNull VerificationCodeId id);
 
     /**
      * Finds the active verification code belonging to the given user.
@@ -26,7 +28,7 @@ public interface VerificationCodeRepository extends Repository<VerificationCode,
      * @param userId the ID of the owning user
      * @return the verification code, or empty if the user has no active code
      */
-    Optional<VerificationCode> findByUserId(String userId);
+    Optional<VerificationCode> findByUserId(@NonNull UserId userId);
 
     /**
      * Finds a verification code by its raw OTP value.
@@ -34,19 +36,19 @@ public interface VerificationCodeRepository extends Repository<VerificationCode,
      * @param code the plain-text OTP value
      * @return the verification code, or empty if no match is found
      */
-    Optional<VerificationCode> findByCode(String code);
+    Optional<VerificationCode> findByCode(@NonNull String code);
 
     /**
      * Persists a new or updated verification code.
      *
      * @param verificationCode the aggregate to save
      */
-    void save(VerificationCode verificationCode);
+    void save(@NonNull VerificationCode verificationCode);
 
     /**
      * Deletes the verification code with the given identity.
      *
      * @param id the identity of the verification code to delete
      */
-    void deleteById(VerificationCodeId id);
+    void deleteById(@NonNull VerificationCodeId id);
 }
