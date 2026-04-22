@@ -24,6 +24,9 @@ public final class PasswordResetRule {
          */
         public static final int MINUTES = 15;
 
+        /**
+         * Duration after which a verification code is considered expired.
+         */
         public static final Duration EXPIRE_AFTER = Duration.ofMinutes(MINUTES);
     }
 
