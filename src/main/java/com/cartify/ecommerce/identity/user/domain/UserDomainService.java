@@ -6,7 +6,6 @@ import com.cartify.ecommerce.identity.user.domain.results.ResetPasswordResult;
 import com.cartify.ecommerce.identity.user.domain.results.VerifyEmailResult;
 import com.cartify.ecommerce.identity.verificationcode.domain.VerificationCode;
 import com.cartify.ecommerce.shared.domain.exception.BusinessRuleException;
-import com.cartify.ecommerce.shared.domain.exception.InvalidValueException;
 import org.jmolecules.ddd.annotation.Service;
 import org.jspecify.annotations.NonNull;
 
@@ -92,16 +91,16 @@ public class UserDomainService {
      *
      * @param user the user requesting the password reset
      * @return a new {@link PasswordReset} aggregate
-     * @throws InvalidValueException if the account is blocked or deleted
+     * @throws BusinessRuleException if the account is blocked or deleted
      */
     public @NonNull PasswordReset initiatePasswordReset(@NonNull User user) {
         UserStatus status = user.getStatus();
 
         if (status == UserStatus.BLOCKED)
-            throw new InvalidValueException(UserRule.Status.BLOCKED_MSG);
+            throw new BusinessRuleException(UserRule.Status.BLOCKED_MSG);
 
         if (status == UserStatus.DELETED)
-            throw new InvalidValueException(UserRule.Status.DELETED_MSG);
+            throw new BusinessRuleException(UserRule.Status.DELETED_MSG);
 
         return PasswordReset.create(user.getId());
     }

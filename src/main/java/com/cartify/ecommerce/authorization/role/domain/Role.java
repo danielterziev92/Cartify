@@ -87,6 +87,7 @@ public class Role implements AggregateRoot<Role, RoleId> {
      * @param newName the new display name; subject to the same validation as {@link #create}
      */
     public void changeName(@NonNull String newName) {
+        this.guardNoSystem();
         String normalizedName = validateAndNormalizeName(newName);
 
         if (this.name.equals(normalizedName)) return;
