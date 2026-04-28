@@ -1,0 +1,62 @@
+package com.cartify.ecommerce.authorization.permission.domain;
+
+import org.jspecify.annotations.NonNull;
+
+import java.util.List;
+import java.util.Optional;
+
+
+/**
+ * Repository interface for managing permission entities in the system.
+ * Provides methods to query and persist permission data.
+ */
+public interface PermissionRepository {
+
+    /**
+     * Retrieves all permissions from the system.
+     *
+     * @return A list of all permission entities in the system
+     */
+    @NonNull List<Permission> findAll();
+
+    /**
+     * Retrieves all permissions associated with a specific module.
+     *
+     * @param module The identifier of the module to filter permissions by
+     * @return A list of permission entities associated with the specified module
+     */
+    @NonNull List<Permission> findAllByModule(@NonNull String module);
+
+    /**
+     * Retrieves all permissions associated with a specific module.
+     *
+     * @param moduleId The identifier of the module to filter permissions by
+     * @return A list of permission entities associated with the specified module
+     */
+    @NonNull List<Permission> findAllByModuleId(@NonNull String moduleId);
+
+    /**
+     * Finds a permission by its module and resource identifiers.
+     *
+     * @param module   The module identifier for the permission
+     * @param resource The resource identifier for the permission
+     * @return An Optional containing the matching Permission if found, or empty if not found
+     */
+    Optional<Permission> findByModuleAndResource(@NonNull String module, @NonNull String resource);
+
+    /**
+     * Checks if a permission exists with the specified module and resource identifiers.
+     *
+     * @param module   The module identifier for the permission
+     * @param resource The resource identifier for the permission
+     * @return true if a permission with the specified module and resource exists, false otherwise
+     */
+    boolean existsByModuleAndResource(@NonNull String module, @NonNull String resource);
+
+    /**
+     * Saves a permission entity to the system.
+     *
+     * @param permission The permission to save
+     */
+    void save(@NonNull Permission permission);
+}
