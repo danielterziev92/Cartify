@@ -9,6 +9,10 @@ import java.util.Optional;
 /**
  * Repository interface for managing permission entities in the system.
  * Provides methods to query and persist permission data.
+ *
+ * <p>This repository is responsible for managing the lifecycle of permission entities,
+ * including their creation, retrieval, and persistence to the underlying data store.
+ * It supports various query operations for permissions based on module, resource, and other criteria.</p>
  */
 public interface PermissionRepository {
 
@@ -59,4 +63,18 @@ public interface PermissionRepository {
      * @param permission The permission to save
      */
     void save(@NonNull Permission permission);
+
+    /**
+     * Saves multiple permission entities to the system in a single operation.
+     *
+     * @param toCreate A list of permission entities to create
+     */
+    void saveAll(List<Permission> toCreate);
+
+    /**
+     * Deletes multiple permission entities from the system in a single operation.
+     *
+     * @param toDelete A list of permission entities to delete
+     */
+    void deleteAll(List<Permission> toDelete);
 }

@@ -4,7 +4,17 @@ import org.jspecify.annotations.NonNull;
 
 
 /**
- * Query types for retrieving permission information.
+ * Sealed query hierarchy for permission retrieval.
+ *
+ * <p>Handled by {@link com.cartify.ecommerce.authorization.permission.application.query.PermissionsQueryHandler}. Pattern matching on the permitted
+ * subtypes guarantees exhaustiveness — adding a new subtype forces all handlers
+ * to be updated at compile time.
+ *
+ * <p>Usage:
+ * <pre>
+ *     handler.handle(new PermissionQuery.All());
+ *     handler.handle(new PermissionQuery.ByModule("catalog"));
+ * </pre>
  */
 public sealed interface PermissionQuery permits
         PermissionQuery.All,
