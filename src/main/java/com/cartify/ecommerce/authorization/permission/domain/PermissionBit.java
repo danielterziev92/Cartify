@@ -1,5 +1,7 @@
 package com.cartify.ecommerce.authorization.permission.domain;
 
+import org.springframework.modulith.NamedInterface;
+
 /**
  * Bit flags representing individual operations that can be granted on a resource.
  *
@@ -16,6 +18,7 @@ package com.cartify.ecommerce.authorization.permission.domain;
  * on a resource. These bits can be combined using bitwise OR operations to create
  * permission masks that represent complex access control policies.</p>
  */
+@NamedInterface
 public enum PermissionBit {
 
     /**

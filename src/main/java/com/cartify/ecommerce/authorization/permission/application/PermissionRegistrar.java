@@ -4,8 +4,8 @@ import com.cartify.ecommerce.authorization.permission.domain.Permission;
 import com.cartify.ecommerce.authorization.permission.domain.PermissionBit;
 import com.cartify.ecommerce.authorization.permission.domain.PermissionEvent;
 import com.cartify.ecommerce.authorization.permission.domain.PermissionRepository;
-import com.cartify.ecommerce.authorization.permission.infrastrucure.annotation.PermissionModule;
-import com.cartify.ecommerce.authorization.permission.infrastrucure.annotation.PermissionResource;
+import com.cartify.ecommerce.shared.annotation.PermissionModule;
+import com.cartify.ecommerce.shared.annotation.PermissionResource;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.NonNull;
@@ -15,6 +15,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
+import org.springframework.modulith.NamedInterface;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,6 +33,7 @@ import java.util.stream.Collectors;
  * that compares declared permissions with existing database records and creates or
  * removes permissions as needed to maintain consistency.</p>
  */
+@NamedInterface
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -40,7 +42,7 @@ public class PermissionRegistrar implements ApplicationRunner {
     private final PermissionRepository repository;
     private final ApplicationEventPublisher eventPublisher;
 
-    @Value("${spring.application.base-package:com.cartify.ecommerce}")
+    @Value("${spring.application.base-package}")
     private String basePackage;
 
     /**
