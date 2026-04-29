@@ -4,6 +4,7 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 
 /**
@@ -37,7 +38,7 @@ public interface PermissionRepository {
      * @param moduleId The identifier of the module to filter permissions by
      * @return A list of permission entities associated with the specified module
      */
-    @NonNull List<Permission> findAllByModuleId(@NonNull String moduleId);
+    @NonNull List<Permission> findAllByModuleId(@NonNull UUID moduleId);
 
     /**
      * Finds a permission by its module and resource identifiers.
