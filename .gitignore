@@ -24,7 +24,8 @@ target/
 .mvn/wrapper/maven-wrapper.jar
 
 # IntelliJ IDEA
-.idea/
+.idea
+.idea/*
 *.iws
 *.iml
 *.ipr
